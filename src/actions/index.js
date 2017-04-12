@@ -21,4 +21,22 @@ const createPost = (props) => {
     }
 };
 
-export {fetchPosts, createPost};
+const fetchPost = (id) => {
+    const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
+
+    return {
+        type: 'FETCH_POST',
+        payload: request
+    }
+};
+
+const deletePost = (id) => {
+    const request = axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`);
+
+    return {
+        type: 'DELETE_POST',
+        payload: request
+    }
+};
+
+export {fetchPosts, createPost, fetchPost, deletePost};
